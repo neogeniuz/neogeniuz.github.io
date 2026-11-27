@@ -1,0 +1,153 @@
+:root {
+  --ink: #15111a;
+  --paper: #fff6e9;
+  --wolfy: #ec4b4c;  --wolfy-2: #f06e46;
+  --leo: #12807f;    --leo-2: #2fb3a8;
+  --miky: #e06a2c;   --miky-2: #f3a33c;
+  --aris: #6a35b8;   --aris-2: #8e5ad6;
+  --pink: #ff4fa0;
+  --yellow: #ffd23f;
+  --radius: 22px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 18px/1.6 "Nunito", system-ui, "Segoe UI", sans-serif;
+  background-image: radial-gradient(rgba(21,17,26,.07) 1.6px, transparent 1.7px);
+  background-size: 18px 18px;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.display { font-family: "Bowlby One", "Arial Black", sans-serif; font-weight: 400; letter-spacing: .01em; line-height: 1.02; }
+
+/* barra */
+.top { position: sticky; top: 0; z-index: 10; background: var(--ink); color: #fff; border-bottom: 4px solid var(--pink); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 16px; }
+.logo { font-family: "Bowlby One", sans-serif; font-size: 1.35rem; text-decoration: none; }
+.logo span { color: var(--yellow); }
+.top nav { display: flex; gap: 22px; font-weight: 800; font-size: .95rem; }
+.top nav a { text-decoration: none; opacity: .85; }
+.top nav a:hover { opacity: 1; color: var(--yellow); }
+
+/* hero */
+.hero { position: relative; overflow: hidden; background: var(--wolfy); color: #fff; border-bottom: 5px solid var(--ink); }
+.hero::before {
+  content: ""; position: absolute; inset: -60%;
+  background: repeating-conic-gradient(from 0deg at 62% 55%, rgba(255,255,255,.0) 0 7deg, rgba(240,110,70,.75) 7deg 14deg);
+  animation: giro 90s linear infinite;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(120,20,50,.28) 2px, transparent 2.2px); background-size: 22px 22px;
+}
+@keyframes giro { to { transform: rotate(360deg); } }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; align-items: end; gap: 24px; padding-top: 56px; }
+.hero h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); margin: 0 0 18px; color: #fff; text-shadow: 5px 5px 0 var(--ink); -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; }
+.hero .claim { font-size: clamp(1.1rem, 2.2vw, 1.35rem); font-weight: 700; max-width: 30em; margin: 0 0 28px; }
+.hero .testo { padding-bottom: 64px; }
+.hero .wolfy { position: relative; justify-self: center; width: min(460px, 100%); }
+.fumetto {
+  position: absolute; left: -8%; top: 4%; max-width: 250px; background: #fff; color: var(--ink);
+  border: 4px solid var(--ink); border-radius: 26px; padding: 14px 18px; font-weight: 800; line-height: 1.3;
+  box-shadow: 6px 6px 0 var(--ink); transform: rotate(-4deg);
+}
+.fumetto::after { content: ""; position: absolute; right: 30px; bottom: -22px; border: 12px solid transparent; border-top: 14px solid var(--ink); border-left-width: 0; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; background: var(--yellow); color: var(--ink); text-decoration: none;
+  font-weight: 900; padding: 14px 22px; border: 4px solid var(--ink); border-radius: 999px; box-shadow: 5px 5px 0 var(--ink);
+  transition: transform .12s, box-shadow .12s;
+}
+.btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--ink); }
+.btn.chiaro { background: #fff; }
+.bottoni { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* sezioni */
+section { padding: 84px 0; }
+.titolo { font-size: clamp(2rem, 4.5vw, 3.1rem); margin: 0 0 12px; }
+.sotto { font-size: 1.15rem; max-width: 40em; margin: 0 0 44px; color: #4a4250; }
+
+/* personaggi */
+.cast { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.card {
+  --c1: var(--wolfy); --c2: var(--wolfy-2);
+  background: #fff; border: 4px solid var(--ink); border-radius: var(--radius); overflow: hidden;
+  box-shadow: 8px 8px 0 var(--ink); display: flex; flex-direction: column; transition: transform .15s;
+}
+.card:hover { transform: translateY(-6px) rotate(-.6deg); }
+.card.leo { --c1: var(--leo); --c2: var(--leo-2); }
+.card.miky { --c1: var(--miky); --c2: var(--miky-2); }
+.card.aris { --c1: var(--aris); --c2: var(--aris-2); }
+.card .ritratto {
+  position: relative; height: 250px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+  background: repeating-conic-gradient(from 0deg at 50% 70%, var(--c1) 0 9deg, var(--c2) 9deg 18deg);
+  border-bottom: 4px solid var(--ink);
+}
+.card .ritratto::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,0,0,.16) 2px, transparent 2.2px); background-size: 18px 18px; }
+.card .ritratto img { position: relative; z-index: 1; height: 232px; width: auto; }
+.card .corpo { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card h3 { font-family: "Bowlby One", sans-serif; font-weight: 400; font-size: 1.7rem; margin: 0; line-height: 1; }
+.etichetta { align-self: flex-start; background: var(--c1); color: #fff; font-weight: 900; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; padding: 4px 10px; border-radius: 999px; border: 2px solid var(--ink); }
+.card p { margin: 0; font-size: .98rem; }
+.card .chi { font-weight: 800; color: var(--c1); }
+.social { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 10px; }
+.social a { font-weight: 800; font-size: .85rem; text-decoration: none; border: 2px solid var(--ink); border-radius: 999px; padding: 5px 11px; background: var(--paper); }
+.social a:hover { background: var(--yellow); }
+.presto { font-size: .85rem; font-weight: 800; color: #7a7180; }
+
+/* come funziona */
+.come { background: var(--ink); color: #fff; border-top: 5px solid var(--ink); }
+.come .sotto { color: #cfc6d6; }
+.passi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.passo { border: 3px solid #fff; border-radius: var(--radius); padding: 26px; position: relative; }
+.passo .n { font-family: "Bowlby One", sans-serif; font-size: 2.6rem; color: var(--yellow); line-height: 1; }
+.passo h3 { margin: 10px 0 6px; font-size: 1.25rem; }
+.passo p { margin: 0; color: #ddd4e4; }
+
+/* banda episodio */
+.episodio { background: var(--yellow); border-top: 5px solid var(--ink); border-bottom: 5px solid var(--ink); }
+.episodio .wrap { display: grid; grid-template-columns: 220px 1fr; gap: 36px; align-items: center; }
+.episodio img { width: 220px; }
+.episodio h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); margin: 0 0 10px; }
+.episodio p { margin: 0 0 20px; font-size: 1.1rem; }
+
+/* footer */
+footer { background: var(--ink); color: #cfc6d6; padding: 42px 0; font-size: .95rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; align-items: center; }
+footer a { color: #fff; font-weight: 800; }
+footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
+
+/* pagine legali */
+.legale { max-width: 780px; margin: 0 auto; padding: 56px 20px 80px; }
+.legale .foglio { background: #fff; border: 4px solid var(--ink); border-radius: var(--radius); box-shadow: 8px 8px 0 var(--ink); padding: 36px clamp(20px, 5vw, 48px); }
+.legale h1 { font-family: "Bowlby One", sans-serif; font-weight: 400; font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 6px; line-height: 1.05; }
+.legale h2 { font-size: 1.3rem; margin: 2em 0 .4em; padding-top: 1em; border-top: 3px dashed #e3d9cc; }
+.legale h2:first-of-type { border-top: 0; padding-top: 0; }
+.legale .data { color: #7a7180; font-weight: 700; margin: 0 0 28px; }
+.legale .lingue { display: flex; gap: 10px; margin-bottom: 24px; }
+.legale .lingue a { font-weight: 800; text-decoration: none; border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; }
+
+@media (max-width: 960px) {
+  .cast { grid-template-columns: repeat(2, 1fr); }
+  .passi { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .top nav { display: none; }
+  .hero .wrap { grid-template-columns: 1fr; padding-top: 40px; }
+  .hero .testo { padding-bottom: 0; }
+  .hero .wolfy { width: min(340px, 90%); }
+  .fumetto { left: -4%; max-width: 190px; font-size: .9rem; }
+  .episodio .wrap { grid-template-columns: 1fr; text-align: center; }
+  .episodio img { margin: 0 auto; width: 170px; }
+  .episodio .bottoni { justify-content: center; }
+  section { padding: 60px 0; }
+}
+@media (max-width: 520px) { .cast { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .hero::before { animation: none; } }
+
+/* niente scroll orizzontale sui telefoni */
+html, body { overflow-x: hidden; }
+.hero .wrap > *, .cast > *, .passi > *, .episodio .wrap > * { min-width: 0; }
+@media (max-width: 760px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .cast { grid-template-columns: minmax(0, 1fr); } .btn { padding: 12px 18px; } }
