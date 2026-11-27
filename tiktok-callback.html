@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accesso completato · Neo Geniuz</title>
+<link rel="icon" href="img/wolfy.png">
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="index.html">NEO <span>GENIUZ</span></a></div></header>
+<main class="legale"><div class="foglio">
+<h1 id="t">Accesso completato</h1>
+<p id="m">Puoi chiudere questa pagina e tornare all'app di Neo Geniuz.</p>
+<p><code id="c" style="word-break:break-all;font-size:1.05rem"></code></p>
+</div></main>
+<script>
+var q = new URLSearchParams(location.search);
+if (q.get('error')) { document.getElementById('t').textContent = 'Accesso annullato'; document.getElementById('m').textContent = q.get('error_description') || q.get('error'); }
+else if (q.get('code')) { document.getElementById('m').textContent = 'Copia questo codice nell\'app di Neo Geniuz:'; document.getElementById('c').textContent = q.get('code'); }
+</script>
+</body>
+</html>
